@@ -7,5 +7,5 @@
 Day2.Submarine sub = new Day2.Submarine("Day2\\input");
 sub.Run();
 Console.WriteLine(sub.Depth);
-Console.WriteLine(sub.Forward);
+Console.WriteLine(sub.HorizontalPosition);
 Console.WriteLine(sub.Result);

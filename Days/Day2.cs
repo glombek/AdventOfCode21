@@ -2,15 +2,17 @@ namespace Day2
 {
     public class Submarine
     {
-        public int Forward { get; set; }
+        public int HorizontalPosition { get; set; }
         public int Depth { get; set; }
+        public int Aim { get; set; }
         public IEnumerable<Instruction> Instructions { get; set; }
 
         public Submarine(string name)
         {
             Instructions = Inputs.Read<string>(name).Select(x=> new Instruction(x));
-            Forward = 0;
+            HorizontalPosition = 0;
             Depth = 0;
+            Aim = 0;
         }
 
         public void Run() {
@@ -18,19 +20,20 @@ namespace Day2
             {
                 switch (instruction.Vector) {
                     case Direction.up:
-                        Depth -= instruction.Magnitude;
+                        Aim -= instruction.Magnitude;
                         break;
                     case Direction.down:
-                        Depth += instruction.Magnitude;
+                        Aim += instruction.Magnitude;
                         break;
                     case Direction.forward:
-                        Forward += instruction.Magnitude;
+                        HorizontalPosition += instruction.Magnitude;
+                        Depth += (instruction.Magnitude * Aim);
                         break;
                 }
             }
         }
 
-        public int Result => Forward * Depth;
+        public int Result => HorizontalPosition * Depth;
     }
 
     public class Instruction
