@@ -19,5 +19,5 @@
 
 // System.Console.WriteLine($"Answer: {day3.CO2ScrubRating * day3.O2GenRating}");
 
-var day4 = new Day4.BingoGame("Day4\\example");
+var day4 = new Day4.BingoGame("Day4\\input");
 System.Console.WriteLine(day4.Play());

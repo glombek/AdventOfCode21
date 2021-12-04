@@ -50,9 +50,10 @@ namespace Day4
 
         public void Print()
         {
+            var won = this.HasWon();
             foreach (var row in Card)
             {
-                System.Console.WriteLine(string.Join(' ', row.Select(x => x.Marked ? $"[{x.Value: 00}]" : $" {x.Value: 00} ")));
+                System.Console.WriteLine(string.Join(' ', row.Select(x => x.Marked ? $"[{x.Value: 00}]" : $" {x.Value: 00}")) + (won ?"\t*":""));
             }
         }
     }
@@ -93,18 +94,29 @@ namespace Day4
         {
             var round = 0;
             var number = 0;
+
+            int? first = null;
+            int? last = null;
+
             do
             {
+                Cards = Cards.Where(x => !x.HasWon()).ToList();
+
                 number = Numbers.ElementAt(round);
 
                 foreach (var card in Cards)
                 {
                     card.Mark(number);
+                    last = card.Score(number);
                 }
 
+                if(first == null) {
+                    first = Cards.FirstOrDefault(x=>x.HasWon())?.Score(number);
+                }
+
+                // Print cards
                 System.Console.WriteLine($"Round {round + 1}");
                 System.Console.WriteLine($"--------------");
-
                 foreach (var card in Cards)
                 {
                     card.Print();
@@ -112,11 +124,9 @@ namespace Day4
                 }
 
                 round++;
-            } while (!Cards.Any(x => x.HasWon()));
+            } while (Cards.Any(x => !x.HasWon())); //TODO: run the whole game
 
-            var winningCard = Cards.First(x => x.HasWon());
-
-            return winningCard.Score(number);
+            return last.Value;
         }
     }
 }
