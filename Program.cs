@@ -19,5 +19,13 @@
 
 // System.Console.WriteLine($"Answer: {day3.CO2ScrubRating * day3.O2GenRating}");
 
-var day4 = new Day4.BingoGame("Day4\\input");
-System.Console.WriteLine(day4.Play());
+// var day4 = new Day4.BingoGame("Day4\\input");
+// System.Console.WriteLine(day4.Play());
+
+// var day5 = new Day5.Day5("Day5\\input");
+// var n = day5.PlotVents();
+// System.Console.WriteLine($"{n} dangerous points");
+
+var shoal = new Day6.Shoal("Day6\\input");
+var count = shoal.SimulateDays(80, false);
+System.Console.WriteLine(count);
