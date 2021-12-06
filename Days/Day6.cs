@@ -1,55 +1,36 @@
 namespace Day6
 {
-
-    public class Lanternfish
-    {
-        public Lanternfish(int cycle)
-        {
-            Cycle = cycle;
-        }
-
-        public Lanternfish()
-        {
-            Cycle = 8;
-        }
-
-        public int Cycle { get; set; }
-
-        public override string ToString()
-        {
-            return Cycle.ToString();
-        }
-
-    }
-
     public class Shoal
     {
         public Shoal(string name)
         {
-            Fish = Inputs.Read<string>(name).First().Split(',').Select(x => new Lanternfish(int.Parse(x))).ToList();
+            Fish = Inputs.Read<string>(name).First().Split(',').Select(x =>byte.Parse(x)).ToList();
         }
 
-        public List<Lanternfish> Fish { get; set; }
+        public List<byte> Fish { get; set; }
 
         public void Age()
         {
-            List<Lanternfish> babies = new List<Lanternfish>();
-
-            foreach (var fish in Fish)
+            int babyCount = 0;
+            int count = Fish.Count();
+            for (int i = 0; i < count; i++)
             {
-                switch (fish.Cycle)
+                switch (Fish[i])
                 {
                     case 0:
-                        babies.Add(new Lanternfish());
-                        fish.Cycle = 6;
+                        babyCount++;
+                        Fish[i] = 6;
                         break;
                     default:
-                        fish.Cycle--;
+                        Fish[i]--;
                         break;
                 }
             }
 
-            Fish.AddRange(babies);
+            for (int i = count; i < count + babyCount; i++)
+            {
+                Fish.Add(8);
+            }
         }
 
         public int SimulateDays(int numDays = 80, bool debug = true)

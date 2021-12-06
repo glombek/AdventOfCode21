@@ -26,6 +26,6 @@
 // var n = day5.PlotVents();
 // System.Console.WriteLine($"{n} dangerous points");
 
-var shoal = new Day6.Shoal("Day6\\input");
-var count = shoal.SimulateDays(80, false);
+var shoal = new Day6.Shoal("Day6\\example");
+var count = shoal.SimulateDays(256, false);
 System.Console.WriteLine(count);
