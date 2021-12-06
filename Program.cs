@@ -26,6 +26,20 @@
 // var n = day5.PlotVents();
 // System.Console.WriteLine($"{n} dangerous points");
 
-var shoal = new Day6.Shoal("Day6\\example");
-var count = shoal.SimulateDays(256, false);
-System.Console.WriteLine(count);
+// var shoal = new Day6.Shoal("Day6\\example");
+// var count = shoal.SimulateDays(256, false);
+// System.Console.WriteLine(count);
+
+
+// var doubles = 256/7;
+// var inputs =  5;
+
+// Console.WriteLine(Math.Pow(2, doubles) * inputs);
+
+
+
+// 343597383680
+//          26984457539
+// Int max = 2147483647
+
+Console.WriteLine(Day6.Day6b.DoStuff("Day6\\input", 256));
