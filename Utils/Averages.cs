@@ -1,5 +1,9 @@
-public static class MedianUtils
+public static class Averages
 {
+    public static int IntegerMean(this IEnumerable<int> list) {
+        return Convert.ToInt32(Math.Round(list.Average()));
+    }
+
     /// <summary>
     /// Partitions the given list around a pivot element such that all elements on left of pivot are <= pivot
     /// and the ones at thr right are > pivot. This method can be used for sorting, N-order statistics such as

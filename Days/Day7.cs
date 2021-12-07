@@ -9,9 +9,18 @@ namespace Day7
         }
         public int Run()
         {
-            var meetingPoint = Crabs.Median();
+            //var meetingPoint = Crabs.IntegerMean();//Crabs.Median();
+            var max = Crabs.Max();
+            var min = Crabs.Min();
 
-            return CalculateFuel(meetingPoint);
+            int leastFuel = int.MaxValue;
+            for (int i = min; i <= max; i++)
+            {
+                var fuel = CalculateFuel(i);
+                if(fuel < leastFuel) leastFuel = fuel;
+            }
+
+            return leastFuel;
         }
 
         public int[] Crabs { get; set; }
@@ -21,16 +30,23 @@ namespace Day7
             int fuel = 0;
             foreach (var crab in Crabs)
             {
+                var steps = 0;
                 if (crab < meetingPoint)
                 {
-                    fuel += meetingPoint - crab;
+                    steps += meetingPoint - crab;
                 }
                 else
                 {
-                    fuel += crab - meetingPoint;
+                    steps += crab - meetingPoint;
+                }
+                for (int i = 1; i <= steps; i++)
+                {
+                    fuel += i;
                 }
             }
             return fuel;
         }
     }
 }
+
+
