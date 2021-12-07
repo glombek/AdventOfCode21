@@ -42,4 +42,7 @@
 //          26984457539
 // Int max = 2147483647
 
-Console.WriteLine(Day6.Day6b.DoStuff("Day6\\input", 256));
+// Console.WriteLine(Day6.Day6b.DoStuff("Day6\\input", 256));
+
+var day7 = new Day7.Day7("Day7\\input");
+System.Console.WriteLine(day7.Run());
